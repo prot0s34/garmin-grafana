@@ -5,7 +5,6 @@ grafana:
     create: false
   ingress:
     enabled: true
-    ingressClassName: nginx
     hosts:
       - &grafana_host yourhost.example.com
     annotations:
@@ -23,14 +22,11 @@ grafana:
         - uid: DS_GARMIN_STATS
           name: GarminInflux
           type: influxdb
-          access: proxy
           url: "http://{{ .Release.Name }}-influxdb:8086"
           database: GarminStats
           user: admin
           secureJsonData:
             password: $__env{INFLUXDB_PASSWORD}
-          basicAuth: false
-          isDefault: true
   dashboards:
     garmin:
       garmin-dashboard:
@@ -44,11 +40,8 @@ grafana:
       apiVersion: 1
       providers:
         - name: garmin
-          orgId: 1
           folder: Garmin
           type: file
-          disableDeletion: false
-          editable: true
           options:
             path: /var/lib/grafana/dashboards/garmin
 

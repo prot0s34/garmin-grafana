@@ -46,14 +46,14 @@ spec:
           ports:
             - name: http
               containerPort: {{ .Values.garmin.port }}
-{{- if .Values.garmin.tokens.persistence.enabled }}
           volumeMounts:
             - name: garmin-tokens
               mountPath: /home/appuser/.garminconnect
-{{- end }}
-{{- if .Values.garmin.tokens.persistence.enabled }}
       volumes:
         - name: garmin-tokens
+{{- if .Values.garmin.tokens.persistence.enabled }}
           persistentVolumeClaim:
             claimName: {{ .Release.Name }}-tokens
+{{- else }}
+          emptyDir: {}
 {{- end }}

@@ -50,9 +50,9 @@ influxdb:
     repository: influxdb
     tag: "1.11"
   persistence:
-    enabled: true
-    size: 5Gi
-    # storageClass: ceph-block
+    enabled: false
+    # size: 5Gi
+    # storageClass: ""
   auth:
     database: GarminStats
   env:
@@ -68,9 +68,9 @@ garmin:
   port: 8000
   tokens:
     persistence:
-      enabled: true
-      size: 100Mi
-      # storageClass: ceph-block
+      enabled: false
+      # size: 100Mi
+      # storageClass: ""
   env:
     - name: INFLUXDB_HOST
       value: "{{ .Release.Name }}-influxdb"

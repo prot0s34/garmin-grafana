@@ -1,3 +1,5 @@
+createExampleSecret: true
+
 grafana:
   enabled: true
   envFromSecret: "{{ .Release.Name }}-credentials"

@@ -1,0 +1,22 @@
+name: helm-chart-push
+on: { push: { branches: [main] } }
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions: { contents: write, pages: write }
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+
+      - run: |
+          git config user.name  "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+      - uses: stefanprodan/helm-gh-pages@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          charts_dir: .
+          branch: gh-pages
+          target_dir: .
+          linting: false

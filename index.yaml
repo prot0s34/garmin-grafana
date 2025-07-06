@@ -1,0 +1,18 @@
+apiVersion: v1
+entries:
+  garmin-grafana:
+  - apiVersion: v2
+    appVersion: 0.3.0
+    created: "2025-07-06T07:54:29.489931505Z"
+    dependencies:
+    - name: grafana
+      repository: https://grafana.github.io/helm-charts
+      version: 9.2.7
+    description: Helm chart for the arpanghosh8453/garmin-grafana
+    digest: 15b1ece3b86186da194b259dc757613f89d386865897a43ec0a7c60cd6bd13ad
+    name: garmin-grafana
+    type: application
+    urls:
+    - https://prot0s34.github.io/garmin-grafana/garmin-grafana-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-07-06T07:54:29.485636323Z"
